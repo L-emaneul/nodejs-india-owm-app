@@ -25,10 +25,7 @@ app.post("/",function(req,res){
             const jsonData = JSON.parse(data);
             const temp = jsonData.main.temp;
             const country = jsonData.sys.country;
-            const imageId = jsonData.weather[0].icon;
-            const imageUrl = "http://openweathermap.org/img/wn/"+imageId+"@2x.png";
-            res.write("<h1> The temperature in "+city+", "+country+" is "+temp+" degree celcius"+"</h1>");
-            res.write("<img src='"+imageUrl+"'></img>");
+            
             res.send();
         });
     });
