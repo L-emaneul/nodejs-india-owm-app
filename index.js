@@ -25,7 +25,15 @@ app.post("/",function(req,res){
             const jsonData = JSON.parse(data);
             const temp = jsonData.main.temp;
             const country = jsonData.sys.country;
-            
+            /*Smit's edit*/
+            //fetch the image id form the json data (inside the weather array)
+            const image_id= jsonData.weather[0].icon;
+            //create a different url for the image
+            const image_url= "http://openweathermap.org/img/wn/"+image_id+"@2x.png";
+            //instead of using just res.send once, you can use res.write as many times as needed and then just do res.send to send all the writes at once.
+            res.write("<h1> The temperature in the "+city+" is "+temp+" °C </h1>");
+            res.write("<img src='"+image_url+"'></img>");
+            /*Smit's edit end*/
             res.send();
         });
     });
